@@ -41,10 +41,19 @@ window.CAJA_CONFIG = {
       puntos: ["Ticket al instante", "Corte de caja diario", "Compatible con impresora y lector"], imagen: "" },
     { titulo: "Controla tu inventario", frase: "Sabe cuánto tienes y qué se está acabando.",
       puntos: ["Avisos de pocas piezas", "Entradas y salidas", "Reportes para tu contador"], imagen: "" },
-    { titulo: "Menú con pedidos por QR", frase: "Tus clientes escanean, ven el menú y piden desde su celular.",
-      puntos: ["Se actualiza en minutos", "QR para cada mesa", "Pedidos directo a cocina"], imagen: "" },
+    { titulo: "Menú digital a tu estilo", frase: "Hojea tres ejemplos reales de diseño: marisquería, cafetería y restaurante.",
+      puntos: ["Diseño pensado para tu negocio", "Se abre al escanear un código QR", "Cambias precios sin rediseñar todo"], imagen: "" },
     { titulo: "Invitación para compartir", frase: "Tus invitados la abren desde WhatsApp y confirman asistencia.",
       puntos: ["Confirmación de asistencia", "Mapa del lugar", "Cuenta regresiva al evento"], imagen: "" }
+  ],
+
+  /* --- Menús de ejemplo (pestaña "Menú digital") ---
+     Puedes agregar, quitar o cambiar menús desde aquí: cada uno lleva un "nombre"
+     (texto del botón) y sus "paginas" (rutas de imágenes .webp, proporción 2:3, 960×1440). */
+  menus: [
+    { nombre: "Marisquería", paginas: ["img/menus/la-palma-1.webp", "img/menus/la-palma-2.webp", "img/menus/la-palma-3.webp"] },
+    { nombre: "Cafetería", paginas: ["img/menus/cafe-cacao-1.webp", "img/menus/cafe-cacao-2.webp", "img/menus/cafe-cacao-3.webp"] },
+    { nombre: "Restaurante café", paginas: ["img/menus/casa-almanza-1.webp", "img/menus/casa-almanza-2.webp", "img/menus/casa-almanza-3.webp"] }
   ],
 
   /* --- Paquetes y precios (EJEMPLO) ---

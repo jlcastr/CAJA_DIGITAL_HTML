@@ -83,6 +83,59 @@
     select(0);
   }
 
+  /* --- Visor de menús de ejemplo --- */
+  var mnBox = $("#mn");
+  var menus = C.menus || [];
+  if (mnBox && menus.length) {
+    var mi = 0, pi = 0, touchX = null;
+    mnBox.innerHTML =
+      '<div class="mn-chips" role="group" aria-label="Elige un menú de ejemplo">' +
+      menus.map(function (m, i) {
+        return '<button class="tb" type="button" data-i="' + i + '" aria-pressed="false">' + esc(m.nombre) + "</button>";
+      }).join("") + "</div>" +
+      '<div class="mn-book">' +
+      '<button class="mn-arr" type="button" data-d="-1" aria-label="Página anterior">' + icon("chev-l") + "</button>" +
+      '<div class="mn-page"><img width="480" height="720" decoding="async" alt=""></div>' +
+      '<button class="mn-arr" type="button" data-d="1" aria-label="Página siguiente">' + icon("chev-r") + "</button>" +
+      "</div>" +
+      '<div class="mn-count" aria-live="polite"></div>';
+    var mnImg = $(".mn-page img", mnBox);
+    var mnCount = $(".mn-count", mnBox);
+    var mnChips = $$(".mn-chips .tb", mnBox);
+    var paintMenu = function () {
+      var m = menus[mi], n = m.paginas.length;
+      mnImg.src = m.paginas[pi];
+      mnImg.alt = "Menú de ejemplo de " + m.nombre + ", página " + (pi + 1) + " de " + n;
+      mnCount.textContent = "Página " + (pi + 1) + " de " + n;
+      mnChips.forEach(function (b, i) { b.setAttribute("aria-pressed", i === mi ? "true" : "false"); });
+      if (n > 1) { new Image().src = m.paginas[(pi + 1) % n]; }
+    };
+    var turn = function (d) {
+      var n = menus[mi].paginas.length;
+      pi = (pi + d + n) % n;
+      paintMenu();
+    };
+    mnChips.forEach(function (b) {
+      b.addEventListener("click", function () {
+        mi = parseInt(b.getAttribute("data-i"), 10);
+        pi = 0;
+        paintMenu();
+      });
+    });
+    $$(".mn-arr", mnBox).forEach(function (b) {
+      b.addEventListener("click", function () { turn(parseInt(b.getAttribute("data-d"), 10)); });
+    });
+    var pageBox = $(".mn-page", mnBox);
+    pageBox.addEventListener("touchstart", function (e) { touchX = e.changedTouches[0].clientX; }, { passive: true });
+    pageBox.addEventListener("touchend", function (e) {
+      if (touchX === null) { return; }
+      var dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) >= 40) { turn(dx < 0 ? 1 : -1); }
+    });
+    paintMenu();
+  }
+
   /* --- Míralo en acción --- */
   var screens = $$(".scr");
   var demos = C.demos || [];

@@ -27,3 +27,5 @@ robots.txt  sitemap.xml  .htaccess
 5. Abre tu dominio y prueba: pestañas, botones de WhatsApp y vista en celular.
 
 Para actualizar precios solo vuelve a subir `js/config.js`.
+
+Para cambiar los menús de ejemplo ("Menú digital"): reemplaza los .webp de `img/menus/` (960×1440) o edita `menus` en `js/config.js`.
