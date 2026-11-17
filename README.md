@@ -29,3 +29,5 @@ robots.txt  sitemap.xml  .htaccess
 Para actualizar precios solo vuelve a subir `js/config.js`.
 
 Para cambiar los menús de ejemplo ("Menú digital"): reemplaza los .webp de `img/menus/` (960×1440) o edita `menus` en `js/config.js`.
+
+**Actualizaciones sin borrar caché:** en `index.html` sube el número de `?v=1` (en `styles.css`, `config.js` y `main.js`) cada vez que publiques cambios en esos archivos (`?v=2`, `?v=3`…). Si reemplazas una imagen, guárdala con otro nombre y actualiza la ruta en `js/config.js`.
