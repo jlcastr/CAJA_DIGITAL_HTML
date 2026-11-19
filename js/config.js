@@ -47,6 +47,16 @@ window.CAJA_CONFIG = {
       puntos: ["Confirmación de asistencia", "Mapa del lugar", "Cuenta regresiva al evento"], imagen: "" }
   ],
 
+  /* --- Demo interactiva (primera sub-pestaña de "Menú digital") ---
+     url: dirección de la demo. qr: ruta del QR (ej. "img/qr-demo-menu.png"); déjalo vacío si no hay. */
+  menuInteractivo: {
+    url: "https://menu-interactivo-9101d.web.app",
+    qr: "",
+    titulo: "Menú digital interactivo",
+    frase: "Pruébalo como lo vería tu cliente al escanear el QR de su mesa.",
+    puntos: ["Pedidos directo a tu WhatsApp", "Sin app que descargar", "Cambias precios y platillos cuando quieras"]
+  },
+
   /* --- Menús de ejemplo (pestaña "Menú digital") ---
      Puedes agregar, quitar o cambiar menús desde aquí: cada uno lleva un "nombre"
      (texto del botón) y sus "paginas" (rutas de imágenes .webp, proporción 2:3, 960×1440). */
